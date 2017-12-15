@@ -59,7 +59,7 @@ public class gui_main {
 	private EmbeddedMediaPlayerComponent vidComp;
 	static ImagePanel panel_ld;
 	static JPanel panel_ls = new JPanel();
-	
+	Color trans = new Color(0,0,0,0);
 	/**
 	 * Launch the application.
 	 */
@@ -99,12 +99,13 @@ public class gui_main {
 	{
 		JLabel[] im = new JLabel[4];
 		String[] n_img = reg.idlist();
-		int d = 75;	
+		int d = 106;	
 		for (int a=0;a<4;a++) 
 		{
-			ImageIcon qrcode = new ImageIcon(n_img[a]+".jpg");
+			ImageIcon qrcode = new ImageIcon("img/qr/" + n_img[a]+".jpg");
 			im[a] = new JLabel("");
-			im[a].setBounds(d, 125, 250, 250);
+			im[a].setBounds(d, 150, 188, 188);
+			im[a].setBackground(trans);
 			im[a].setIcon(qrcode);
 			im[a].setOpaque(true);
 			p.add(im[a]);
@@ -274,7 +275,7 @@ public class gui_main {
 	private void initialize() {
 		
 
-		File a = new File("back.png");
+		File a = new File("img/bkg/back.png");
 		BufferedImage myImage = null;
 		try {
 			myImage = ImageIO.read(a);
@@ -313,13 +314,13 @@ public class gui_main {
 		//PANNELLO SOTTO
 		//###############################
 		
-		File f = new File("rt_c.png");
-		File fz = new File("qrzoom.png");
+		File f = new File("img/bkg/rt_c.png");
+		File fz = new File("img/bkg/qrzoom.png");
 		BufferedImage bkg_pnl_st = null;
 		BufferedImage zoom = null;
 		JLabel bigqr = new JLabel();
 		bigqr.setBounds(71, 6, 350, 350);
-		bigqr.setIcon(img_rsz("qritis.png", bigqr));
+		bigqr.setIcon(img_rsz("img/qr/qritis.png", bigqr));
 		try {
 			bkg_pnl_st = ImageIO.read(f);
 			zoom = ImageIO.read(fz);
@@ -339,7 +340,7 @@ public class gui_main {
 		//###############################
 		//PANNELLO SUPERIORE--------------------------------------------------------------
 		//###############################
-		File ft = new File("tempo.png");
+		File ft = new File("img/bkg/tempo_bkg.png");
 		BufferedImage bkg_pnl_top = null;
 		try {
 			bkg_pnl_top = ImageIO.read(ft);
@@ -357,7 +358,7 @@ public class gui_main {
 		//###############################
 
 				
-		File fn = new File("news_bkg.png");
+		File fn = new File("img/bkg/news_bkg.png");
 		BufferedImage bkg_pnl_ld = null;
 		try {
 			bkg_pnl_ld = ImageIO.read(fn);
@@ -376,10 +377,10 @@ public class gui_main {
 		frame.getContentPane().add(panel_ld);
 		
 		//PANNELLO LSINISTRO-------------------------------------------------------------
-		File fv = new File("news_bkg.png");
+		File fv = new File("img/bkg/vid_bkg.png");
 		BufferedImage bkg_pnl_ls = null;
 		try {
-			bkg_pnl_ls = ImageIO.read(fn);
+			bkg_pnl_ls = ImageIO.read(fv);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -428,15 +429,3 @@ public class gui_main {
 		
 		}
 }
-
-
-
-
-/*
-https://stackoverflow.com/questions/6791767/make-a-bunch-of-jlabel-s-invisible
-http://www.math.uni-hamburg.de/doc/java/tutorial/post1.0/converting/deprecatedAWT.html
-https://stackoverflow.com/questions/2479058/how-to-make-a-boolean-variable-switch-between-true-and-false-every-time-a-method
-https://stackoverflow.com/questions/11050074/how-to-check-if-radiobutton-is-checked
-https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel/16345968#16345968
-
-*/
