@@ -17,8 +17,7 @@ public class Qr  {
 		{
 			System.out.println("QR:"+details[run]);
 			ByteArrayOutputStream out = QRCode.from(details[run]).withSize(250, 250).to(ImageType.JPG).stream();
-			
-			File f = new File(System.getProperty("user.dir")+"\\"+img_n[run]+".jpg");
+			File f = new File(System.getProperty("user.dir")+"/img/qr_large/"+img_n[run]+".jpg");
 			FileOutputStream fos;
 			try 
 			{
@@ -30,7 +29,20 @@ public class Qr  {
 			{
 				e.printStackTrace();
 			}
+			BufferedImage crop = ImageIO.read(f);//
+			//crop = crop.getSubimage(31, 31, crop.getWidth() -2*50,crop.getHeight() -2*50);//
+			crop = crop.getSubimage(32, 32, 186,186);//
+
+			File outp = new File(System.getProperty("user.dir")+"/img/qr/"+img_n[run]+".jpg");
+			ImageIO.write(crop, "jpg", outp);
+			File del = new File(f.getAbsolutePath());
+			del.delete();
+			System.out.println(del.exists());
 		}
 		
 	}
 }
+/*
+https://stackoverflow.com/questions/12674064/how-to-save-a-bufferedimage-as-a-file
+
+*/
